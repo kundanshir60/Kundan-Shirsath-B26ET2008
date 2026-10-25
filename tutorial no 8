@@ -1,0 +1,87 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BasicInfo {
+protected:
+    int empId;
+    string name;
+    int age;
+
+public:
+    BasicInfo() {
+        empId = 0;
+        name = "";
+        age = 0;
+    }
+
+    void inputBasicInfo() {
+        cout << "Enter Employee ID: ";
+        cin >> empId;
+        cin.ignore();
+        cout << "Enter Name: ";
+        getline(cin, name);
+        cout << "Enter Age: ";
+        cin >> age;
+    }
+
+    void displayBasicInfo() {
+        cout << "Employee ID: " << empId << endl;
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+class DepartmentInfo {
+protected:
+    string department;
+    string designation;
+    double salary;
+
+public:
+    DepartmentInfo() {
+        department = "";
+        designation = "";
+        salary = 0;
+    }
+
+    void inputDepartmentInfo() {
+        cin.ignore();
+        cout << "Enter Department: ";
+        getline(cin, department);
+        cout << "Enter Designation: ";
+        getline(cin, designation);
+        cout << "Enter Salary: ";
+        cin >> salary;
+    }
+
+    void displayDepartmentInfo() {
+        cout << "Department: " << department << endl;
+        cout << "Designation: " << designation << endl;
+        cout << "Salary: " << salary << endl;
+    }
+};
+
+class Employee : public BasicInfo, public DepartmentInfo {
+public:
+    void inputEmployee() {
+        cout << "Enter Employee Details" << endl;
+        inputBasicInfo();
+        inputDepartmentInfo();
+    }
+
+    void displayEmployee() {
+        cout << "\nEmployee Details" << endl;
+        displayBasicInfo();
+        displayDepartmentInfo();
+    }
+};
+
+int main() {
+    Employee e;
+
+    e.inputEmployee();
+    e.displayEmployee();
+
+    return 0;
+}
