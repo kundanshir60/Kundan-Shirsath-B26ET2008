@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+class Complex
+{
+    int real, imag;
+
+public:
+    void get()
+    {
+        cin >> real >> imag;
+    }
+
+    void display()
+    {
+        cout << real << " + " << imag << "i" << endl;
+    }
+
+    Complex complex(Complex a, Complex b)
+    {
+        Complex t;
+        t.real = a.real + b.real;
+        t.imag = a.imag + b.imag;
+        return t;
+    }
+
+    Complex complex(Complex a, Complex b, Complex c)
+    {
+        Complex t;
+        t.real = a.real + b.real + c.real;
+        t.imag = a.imag + b.imag + c.imag;
+        return t;
+    }
+};
+
+int main()
+{
+    Complex c1, c2, c3, obj, result;
+
+    cout << "Enter three complex numbers (real imaginary):\n";
+    c1.get();
+    c2.get();
+    c3.get();
+
+    result = obj.complex(c1, c2);
+    cout << "Sum of two: ";
+    result.display();
+
+    result = obj.complex(c1, c2, c3);
+    cout << "Sum of three: ";
+    result.display();
+
+    return 0;
+}
