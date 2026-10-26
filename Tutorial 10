@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int choice, a, b, n;
+
+    do {
+        cout << "\n1. Invalid Input";
+        cout << "\n2. Division by Zero";
+        cout << "\n3. Negative Value";
+        cout << "\n4. Exit";
+        cout << "\nEnter your choice: ";
+        cin >> choice;
+
+        try {
+            switch (choice) {
+                case 1:
+                    cout << "Enter an integer: ";
+                    if (!(cin >> a))
+                        throw "Invalid input!";
+                    cout << "Valid input: " << a << endl;
+                    break;
+
+                case 2:
+                    cout << "Enter two numbers: ";
+                    cin >> a >> b;
+                    if (b == 0)
+                        throw "Division by zero!";
+                    cout << "Result: " << (double)a / b << endl;
+                    break;
+
+                case 3:
+                    cout << "Enter a number: ";
+                    cin >> n;
+                    if (n < 0)
+                        throw n;
+                    cout << "Positive value: " << n << endl;
+                    break;
+
+                case 4:
+                    cout << "Exiting program." << endl;
+                    break;
+
+                default:
+                    cout << "Invalid menu choice!" << endl;
+            }
+        }
+        catch (const char* msg) {
+            cout << "Exception: " << msg << endl;
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(1000, '\n');
+            }
+        }
+        catch (int value) {
+            cout << "Exception: Negative value " << value << endl;
+        }
+
+    } while (choice != 4);
+
+    return 0;
+}
