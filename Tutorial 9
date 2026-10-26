@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+class Notification {
+public:
+    virtual void notify() {
+        cout << "Sending notification" << endl;
+    }
+};
+
+class AppNotification : public Notification {
+public:
+    void notify() override {
+        cout << "App Notification" << endl;
+    }
+};
+
+class EmailNotification : public Notification {
+public:
+    void notify() override {
+        cout << "Email Notification" << endl;
+    }
+};
+
+class SMSNotification : public Notification {
+public:
+    void notify() override {
+        cout << "SMS Notification" << endl;
+    }
+};
+
+int main() {
+    AppNotification app;
+    EmailNotification email;
+    SMSNotification sms;
+
+    Notification *n;
+
+    n = &app;
+    n->notify();
+
+    n = &email;
+    n->notify();
+
+    n = &sms;
+    n->notify();
+
+    return 0;
+}
